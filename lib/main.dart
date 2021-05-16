@@ -19,9 +19,9 @@ class MyTodoApp extends StatelessWidget{
   }
 }
 //リスト一覧画面用
-class TodoListPage extends StatelessWidget{
+class TodoListPage extends StatefulWidget{
   @override
-  _TodoListPageState createState() => _TodoAddPageState();
+  _TodoListPageState createState() => _TodoListPageState();
 }
 
 class _TodoListPageState extends State<TodoListPage>{
@@ -43,17 +43,17 @@ class _TodoListPageState extends State<TodoListPage>{
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async{
+        onPressed: () async {
           final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context){
               return TodoAddPage();
             }),
-          );
-          if (newListText != null){
-            setState(() {
-              todoList.add(newListText);
-            });
-          }
+      );
+        if(newListText != null){
+          setState(() {
+            todoList.add(newListText);
+          });
+        }
         },
         child: Icon(Icons.add),
       ),
@@ -61,7 +61,7 @@ class _TodoListPageState extends State<TodoListPage>{
   }
 }
 
-class TodoAddPage extends StatelessWidget{
+class TodoAddPage extends StatefulWidget{
   @override
   _TodoAddPageState createState() => _TodoAddPageState();
 }
